@@ -8,6 +8,8 @@ import es.ucm.tp1.supercars.control.exceptions.GameException;
 import es.ucm.tp1.supercars.logic.Game;			// GAME
 
 public class SuperCars {
+	
+	// Prueba
 
 	private static final String VERSION = "1.0";
 	private static final String USAGE_MSG = "Usage: Super cars <level> [<seed>]";

@@ -7,8 +7,9 @@
 Para que se imprima correctamente en la terminal, los 
 caracteres son UTF8, asegurate de cambiar la configuracion.
 
-Para ejecutar el programa hay que pasar unos parametros
-uso: Super cars <nivel> [<semilla>]
+> [!CAUTION]
+> Para ejecutar el programa hay que pasar unos parametros. Uso detallado:
+Uso: Super cars <nivel> [<semilla>]
 	<nivel>: TEST, EASY, HARD, ADVANCED
 	<semilla>: la semilla tiene que ser un numero (es opcional)
 Ejemplos: 
