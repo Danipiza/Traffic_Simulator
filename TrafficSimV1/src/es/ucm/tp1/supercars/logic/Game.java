@@ -20,6 +20,7 @@ public class Game { // HERENCIA?
 	
 	private Random rand;	
 	
+	@SuppressWarnings("unused")
 	private long seed;
 	
 	public Level level;	
@@ -74,7 +75,7 @@ public class Game { // HERENCIA?
 		GameObjectGenerator.generateRuntimeObjects(this);			
 	}	
 	
-	public void updateRecord() { // F
+	public void updateRecord() { // TODO
 		
 		
 	}

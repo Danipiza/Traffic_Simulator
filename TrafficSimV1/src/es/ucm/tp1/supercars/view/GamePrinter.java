@@ -6,20 +6,19 @@ import es.ucm.tp1.supercars.logic.gameobjects.Coin;
 import es.ucm.tp1.supercars.logic.gameobjects.Grenade;
 import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
 import es.ucm.tp1.supercars.logic.gameobjects.Pedestrian;
-import es.ucm.tp1.supercars.logic.gameobjects.SuperCoin;
 import es.ucm.tp1.supercars.logic.gameobjects.Truck;
 import es.ucm.tp1.supercars.logic.gameobjects.Turbo;
 import es.ucm.tp1.supercars.logic.gameobjects.Wall;
 import es.ucm.tp1.supercars.utils.StringUtils;
-import es.ucm.tp1.supercars.logic.gameobjects.GameObjectContainer; // NO LO DAN (LISTAS COIN Y OBSTACLE)
+
 
 public class GamePrinter {
 
 	private static final String SPACE = " ";
 
-	private static final String ROAD_BORDER_PATTERN = "═";
+	private static final String ROAD_BORDER_PATTERN = "â•�";
 
-	private static final String LANE_DELIMITER_PATTERN = "─";
+	private static final String LANE_DELIMITER_PATTERN = "â”€";
 
 	private static final int CELL_SIZE = 7;
 
@@ -57,9 +56,7 @@ public class GamePrinter {
 	}
 
 	private Game game;
-	
-	private static Level level;
-	
+		
 	private String indentedRoadBorder;
 
 	private String indentedLanesSeparator;
@@ -69,8 +66,6 @@ public class GamePrinter {
 	// NUEVO ATRIBUTO
 	private Level currentLevel;
 	
-	// CODIGO NO DADO
-	private SuperCoin SuperCoin;
 	
 	public GamePrinter(Game game) { 
 	    this.game = game; 
