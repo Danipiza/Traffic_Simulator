@@ -1,7 +1,24 @@
 ## Traffic Simulator
+
 ---
 
-### Prácticas de TP1 y TP2.
+### Mejoras en los proyectos + prácticas de TP1 y TP2 (+ ejercicios de examen).
+Este repositorio tiene las prácticas resueltas del curso 2021-2022, con los ejercicios prácticos que preguntaron en el examen final. 
+Ademas de mejoras personales que he visto convenientes a la hora de documentar y programar el código, y para la comodidad a la hora de ejecutar el programa. 
+Hacer mas eficiente el código, reorganizar las clases y mejorar la interfaz ha sido una de las partes que mas me ha gustado debido a que teniamos que hacer 
+todo cuadriculado con un guión, limitando el desarrollo de la aplicación. Además de que vairas de las funcionalidades se podrían hacer mucho mejor. 
+Pero para empezar a con nuestro primer lenguaje orientado a objetos está muy bien organizada la asignatura.
+
+---
+
+### Upgrades in the projects + TP1 & TP2 university practices (+ exam exercices).
+This repository has resolved the two practices of the 2021-2022 course, with the practical exercises asked in the final exam of the subject.
+In addition to personal improvements that I have seen convenient when documenting and programming the code, and for convenience when executing the program.
+Making the code more efficient, reorganizing the classes and improving the interface has been one of the parts that I liked the most because we had to do
+everything gridded with a script, limiting the development of the application. In addition, several of the functionalities could be done much better.
+But to start with our first object-oriented language, the subject is very well organized.
+
+---
 
 # TODO
 - Analizar, cambiar y documentar el codigo
@@ -40,4 +57,6 @@ Comandos avanzados
 ---
 
 ### V2, interfaz (TP2)
+
+Ejecutar el programa, y añadir un fichero json con los datos del programa, pulsando el boton de archivos de arriba a la izquierda, por ejemplo ex2.json
 
