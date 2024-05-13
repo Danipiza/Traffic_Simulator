@@ -61,8 +61,7 @@ public class ControlPanel extends JPanel implements TrafficSimObserver {
 	public ControlPanel(Controller _ctrl) {
 		ctrl = _ctrl;
 		_ctrl.addObserver(this);
-		initGUI();
-		
+		initGUI();		
 	}
 	
 	public void initGUI() {
@@ -270,22 +269,7 @@ public class ControlPanel extends JPanel implements TrafficSimObserver {
 		int estado = CO2Dialog.open(vehicles, CO2);
 		
 		if (estado == 1) {
-			List<Pair<String,Integer>> cs = new ArrayList<Pair<String,Integer>>();	
-			
-			
-			
-			cs.add(new Pair<String, Integer>(CO2Dialog.getVehicle().getId(), CO2Dialog.getCO2()));
-			
-			
-			
-			try {						
-				 
-				ctrl.addEvent(new NewSetContClassEvent(ctrl.getTicks() + CO2Dialog.getTicks(), cs));				
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog((Frame) SwingUtilities.getWindowAncestor(this), 
-						"Something went wrong ...",	"ERROR", JOptionPane.ERROR_MESSAGE);
 				
-			}			
 			
 		} 
 	}
