@@ -7,8 +7,19 @@ import control.Level;
 import control.exceptions.GameException;
 import logic.Game;			
 
+
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for executing the program
+ * ESP: Clase para ejecutar el programa
+ */
 public class SuperCars {
 	
+	/**
+	 *  ENG: Init messages
+	 *  ESP: Mensajes de inicializacion
+	 */
 	private static final String VERSION = "1.0";
 	private static final String USAGE_MSG = "Usage: Super cars <level> [<seed>]";
 	private static final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
@@ -16,12 +27,26 @@ public class SuperCars {
 	private static final String SEED_IS_NUMBER_MSNG = "the seed must be a number";
 	private static final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 	
+	
+	
+	/**
+	 * 
+	 * ENG: Method for printing the usage mode
+	 * ESP: Funcion para imprimir el modo de uso
+	 */
 	private static void usage() {
 		System.out.println(USAGE_MSG);
 		System.out.println("\t<level>: " + Level.all(", "));
 		System.out.println("\t<seed>: " + SEED_IS_NUMBER_MSNG);
 	}
-
+	
+	/**
+	 * @param args
+	 * @throws GameException
+	 * 
+	 * ENG: Main method 
+	 * ESP: Funcion main 
+	 */
 	public static void main(String[] args) throws GameException {
 		if (args.length<1 || args.length>2) {
 			usage();

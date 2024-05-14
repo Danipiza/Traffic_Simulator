@@ -5,47 +5,50 @@ import logic.Game;
 import logic.actions.ExplosionAction;
 import logic.Collider;
 
-// FALTA HACER TAMBIEN EL COMANDO Grenade
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Grenade
+ * ESP: Clase para el objeto Granada
+ */
 public class Grenade extends GameObject{
 
-	private static final String SYMBOL = "ð";
-	
+	private static final String SYMBOL = "ð";	
 	public static final Object INFO = "Explodes in 3 cycles";
 	
-	private int time;
+	private int time; // To explode
 	
-	//private Collider Collider;
-
-	// CONSTRUCTORA DEL GRENADE
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Grenade
+	 * ESP: Constructor de la clase Granada
+	 */
 	public Grenade(Game game, int x, int y) {
 		super(game, x, y);
-		time = 3;
+		time=3; // cycles to explode
 	}
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	/**
+	 *  ENG: toString function to print Grenade
+	 *  ESP: funcion toString para imprimir Granada
+	 */
 	public String toString() {
 		String ret = " ";
 		if (isAlive()) ret = SYMBOL + "[" + time + "]";
 		return ret;
 	}
 	
-	// FUNCIONES DE HERENCIA
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
 	
 	@Override
-	public void onDelete() {
+	public void onDelete() { // Explode and remove from the road
 		game.removeDead(this);
-		game.execute(new ExplosionAction(this.x, this.y));
-	
-		/*Collider C;
-		for (int i = 0; i < 2; ++i) {
-			for (int j = 0; j < 2; ++j) {
-				System.out.println((this.x + j) + " " + (this.symbol + i));
-				C = game.getObjectInPosition(this.x + j, this.y + i);
-				System.out.println();
-				if (C != null) C.receiveExplosion();
-			}
-			
-		}*/
+		game.execute(new ExplosionAction(this.x, this.y));		
 	}
 	
 	@Override
@@ -53,48 +56,47 @@ public class Grenade extends GameObject{
 		return false;
 	}
 
-	// NO COLISIONA CON EL PLAYER
 	@Override
-	public boolean receiveCollision(Player player) {
+	public boolean receiveCollision(Player player) { // Cant collide with the player
 		return false;
 	}
 
 	
 	@Override
-	public void onEnter() {
-		// NO SE TOCA
-	}
+	public void onEnter() {	} 
 
 	@Override
-	public void update() {
+	public void update() { // Doesnt moves, but reduce the time to explode
 		time--;
-		if (time == 0) {
-			onDelete();
-		}
+		if (time==0) onDelete();
+	}
+
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
+	
+	@Override
+	public boolean receiveShoot() { // Instantly explode
+		onDelete();	
+		return true;
 	}
 
 	@Override
-	public boolean receiveShoot() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean receiveExplosion() { // Instantly explode
+		onDelete();
+		return true;
 	}
 
 	@Override
-	public boolean receiveExplosion() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean receiveWave() { // Moves one column to the right
+		this.x++; 
+		return true;
 	}
 
 	@Override
-	public boolean receiveWave() {
-		this.x++; // ESTE NO SE SI TAMBIEN LE AFECTA LA WAVE
-		return false;
-	}
-
-	@Override
-	public boolean receiveThunder() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean receiveThunder() { // Instantly explode
+		onDelete();
+		return true;
 	}
 	
 

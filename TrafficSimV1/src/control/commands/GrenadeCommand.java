@@ -8,28 +8,38 @@ import control.exceptions.NotEnoughCoinsException;
 import logic.Game;
 import logic.gameobjects.*;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for Grenade command
+ * ESP: Clase para el comando Granada
+ */
 public class GrenadeCommand extends Command implements Buyable {
 
 	private static final String NAME = "Grenade";
-
 	private static final String DETAILS = "[g]renade <x> <y>";
-
 	private static final String SHORTCUT = "g";
-
-	private static final String HELP = "add a grenade in position x, y";
-	
-	private static final String FAILED_MSG = "Failed to add a grenade"; // ERROR DE EXCEPCION DINERO
-	
-	private static final String COORDINATES_NUMBER_ERROR = "Coordinates must be on the road"; // ERROR DE FUERA DEL TABLERO
+	private static final String HELP = "add a grenade in position x, y";	
+	private static final String FAILED_MSG = "Failed to add a grenade"; // Money exception	
+	private static final String COORDINATES_NUMBER_ERROR = "Coordinates must be on the road"; // Out of road exception
 	
 	private int x, y;
 	
+	/**
+	 * 
+	 * ENG: Class constructor for GrenadeCommand
+	 * ESP: Constructor de la clase ComandoGranada
+	 */
 	public GrenadeCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);		
 	}
 
 		
 	
+	/**
+	 *  ENG: Throws the grenade to the desire coordinates
+	 *  ESP: Lanza la granada a la coordenada deseada
+	 */
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
 		boolean ret = false;

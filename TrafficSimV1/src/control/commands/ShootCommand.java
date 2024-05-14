@@ -7,24 +7,33 @@ import logic.Game;
 import logic.actions.ShootAction;
 import logic.gameobjects.*; 
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the Shoot command
+ * ESP: Clase para el comando Dispara
+ */
 public class ShootCommand extends Command implements Buyable{
 
 	private static final String NAME = "shoot";
-
 	private static final String DETAILS = "[s]hoot";
-
 	private static final String SHORTCUT = "s";
-
-	private static final String HELP = "shoot bullet";
-	
+	private static final String HELP = "shoot bullet";	
 	private static final String FAILED_MSG = "Failed to shoot";
 	
+	/**
+	 *
+	 * ENG: Class constructor for ShootCommand
+	 * ESP: Constructor de la clase ComandoDispara
+	 */
 	public ShootCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);		
 	}
 	
-	// FUNCION QUE HACE QUE EL PLAYER DISPARE 
-	// SOLO AFECTA A LA PARTE VISIBLE DEL TABLERO
+	/**
+	 *  ENG: Player shoot in his actual lane, only affects the visible column
+	 *  ESP: El jugador dispara en su carril actual, solo afecta a las columnas visibles
+	 */
 	public boolean execute(Game game) throws CommandExecuteException {
 		boolean ret;
 		
@@ -41,12 +50,6 @@ public class ShootCommand extends Command implements Buyable{
 		
 		return ret;
 		
-		/* ANTIGUA VERSION
-		 
-			game.execute(new ShootAction());
-			game.update();
-		}
-		return true;*/
 	}
 
 	@Override

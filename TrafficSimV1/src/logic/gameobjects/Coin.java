@@ -2,22 +2,34 @@ package logic.gameobjects;
 
 import logic.Game;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Coin
+ * ESP: Clase para el objeto Coin
+ */
 public class Coin extends GameObject{
 	
 	private static final String SYMBOL = "¢"; 
-
-	public static final Object INFO = "The player receive 1 coin"; 
-	
+	public static final Object INFO = "The player receive 1 coin"; 	
 	private static final int VALUE = 1;
 	
-	private boolean alive;
 	
-	// CONSTRUCTORA DE LA COIN
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Coin
+	 * ESP: Constructor de la clase Coin
+	 */
 	public Coin(Game game, int x, int y) {		  
 		super(game, x, y);		
 	}
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	
+	
+	// toString 
 	public String toString() {
 		String Symbol = " ";
 		
@@ -28,63 +40,59 @@ public class Coin extends GameObject{
 		
 	
 	
-	// FUNCIONES DE HERENCIA
+	// -------------------------------------------------------------------------------------------------------
+	// --- GameObject ----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
 
 	@Override
 	public boolean doCollision() {		
 		return false;
 	}
 
-	// FUNCION QUE SUMA UNA COIN SI EL PLAYER COLISIONA Y PONE A -1 LA x DE LA COIN
 	@Override
-	public boolean receiveCollision(Player player) {
-		player.addCoins();
-		this.x = -1; // ANTES ESTABA EN OTRA FUNCION (MAS ARRIBA)
+	public boolean receiveCollision(Player player) { // Removes from the road
+		player.addCoins(); // Adds a coin to the player
+		this.x = -1; 
 		return false;
 	}
 
 	@Override
-	public void onEnter() {
-		
-	}
+	public void onEnter() {}
 
 	@Override
-	public void update() {
-		
-	}
+	public void update() {} // Doesnt moves
 
 	@Override
-	public void onDelete() {
+	public void onDelete() {}
 		
-	}
-	
-	// PA QUE FUNCIONE EL GAMEPRINTER 
 	public static Object getCoinsCount() {		
 		return null;
 	}
+	
+	
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
+	
+	
+	@Override
+	public boolean receiveShoot() {	return false; } // Doesnt affects 
 
 	@Override
-	public boolean receiveShoot() {
-		// TODO Auto-generated method stub
-		return false;  // NO LE DA
-	}
-
-	@Override
-	public boolean receiveExplosion() {
+	public boolean receiveExplosion() { // Remove from the road
 		game.removeDead(this);
 		return true;
 	}
 
 	@Override
-	public boolean receiveWave() {
+	public boolean receiveWave() { // Move the coin one column
 		this.x++;
 		return true;
 	}
 
 	@Override
-	public boolean receiveThunder() {
-		//game.removeDead(this);
-		return false; // NO LE DA
+	public boolean receiveThunder() { // Doesnt affects
+		return false; 
 	}	
 	
 	

@@ -4,29 +4,38 @@ import logic.Game;
 import logic.gameobjects.*;
 import control.Level;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Pedestrian
+ * ESP: Clase para el objeto Peaton
+ */
 public class Pedestrian extends GameObject{
 
 	private static final String SYMBOL = "☺";
-
 	public static final Object INFO = "Hits the car";   
 	
-	//private Game game;	
 	
-	//private GameObjectContainer objects;	
-	
-	private Level level;
-	
-	private Player player;
-	
-	boolean sube = false;
-	boolean baja = true;
+	boolean up = false;
+	boolean down = true;
 	
 	// CONSTRUCTORA DEL PEDESTRIAN
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Pedestrian
+	 * ESP: Constructor de la clase Peaton
+	 */
 	public Pedestrian(Game game, int x, int y) {	  
 		super(game, x, y);	
 	}	
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	/**
+	 *  ENG: toString function to print Pedestrian
+	 *  ESP: funcion toString para imprimir Peaton
+	 */
 	public String toString() {
 		String ret = " ";
 		if (isAlive()) ret = SYMBOL;
@@ -34,10 +43,12 @@ public class Pedestrian extends GameObject{
 		return ret;
 	}
 	
-	// FUNCIONES DE HERENCIA
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
 	
 	@Override
-	public void onDelete() {
+	public void onDelete() { // Removes from the road
 		this.x = -1;		
 	}
 
@@ -46,67 +57,68 @@ public class Pedestrian extends GameObject{
 		return false;
 	}
 
-	// SE CHOCA Y EL PLAYER MUERE
 	@Override
-	public boolean receiveCollision(Player player) {
+	public boolean receiveCollision(Player player) { // Collides with the player
 		player.setCrashed();
 		return false;
 	}
 
 	@Override
-	public void onEnter() {
-		
-	}
+	public void onEnter() {	}
 
 	@Override
-	// ESTA FUNCION DE update HACE QUE SE MUEVA DE ARRIBA ABAJO, 
-	// SIEMPRE QUE PUEDA EMPIEZA SUBIENDO
-	public void update() {
+	public void update() { // Moves in one direction until its hits with a roads limit
 		
-		if (baja && this.y != game.getLevel().getWidth()) {
-			this.y += 1;
-			if ((this.y) == game.getLevel().getWidth()-1) {
-				sube = true;
-				baja = false;
+		if (down && y!=game.getLevel().getWidth()) {
+			y++;
+			if (y==game.getLevel().getWidth()-1) {
+				up=true;
+				down=false;
 			}
 		}
-		else if (this.y != 0){ // HAY QUE CAMBIARLO
-			this.y -= 1;
-			sube = true;
-			baja = false;
+		else if (y != 0){ 
+			y--;
+			up=true;
+			down=false;
 			
-			if ((this.y) == 0) {
-				sube = false;
-				baja = true;
+			if (y==0) {
+				up=false;
+				down=true;
 			}
 		}
 		
 		
 	}
+	
+	
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
 
 	@Override
-	public boolean receiveShoot() {			
-		game.getPlayer().resetCoins(); // MONEDAS A CERO SI MATAS A UN PEDESTRIAN
-		
-		return true; // LE DA
-	}
-
-	@Override
-	public boolean receiveExplosion() {
+	public boolean receiveShoot() {	// Deletes the from the road, and set the players coins to zero.		
+		game.getPlayer().resetCoins(); 
 		game.removeDead(this);
-		return true; // LE DA
+		return true; 
 	}
 
 	@Override
-	public boolean receiveWave() {
+	public boolean receiveExplosion() { // Deletes the from the road, and set the players coins to zero.	
+		game.getPlayer().resetCoins();
+		game.removeDead(this);
+		return true; 
+	}
+
+	@Override
+	public boolean receiveWave() { // Moves one column to the right
 		this.x++; 
-		return true; // LE DA
+		return true; 
 	}
 
 	@Override
-	public boolean receiveThunder() {
+	public boolean receiveThunder() { // Deletes the from the road.
 		game.removeDead(this);
-		return true; // LE DA
+		return true;
 	}
 	
 	

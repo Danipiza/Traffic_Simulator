@@ -1,25 +1,30 @@
 package control.commands;
 
-import java.util.Scanner;
-
 import control.Level;
 import control.exceptions.CommandParseException;
 import logic.Game;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for Reset command
+ * ESP: Clase para el comando Reset
+ */
 public class ResetCommand extends Command {
 
 	private static final String NAME = "reset";
-
 	private static final String DETAILS = "[r]eset [<level> <seed>]";
-
 	private static final String SHORTCUT = "r";
-
-	private static final String HELP = "reset game";
+	private static final String HELP = "reset game";	
 	
-	private static Long seed;
-	
+	private static Long seed;	
 	private static String levelString;
 	
+	/**
+	 *
+	 * ENG: Class constructor for ResetCommand
+	 * ESP: Constructor de la clase ComandoReinicio
+	 */
 	public ResetCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);	
 	}
@@ -33,23 +38,10 @@ public class ResetCommand extends Command {
 		
 		
 		
-		/*ANTERIOR RESET
-		Scanner scanner = new Scanner(System.in);
-		
-		
-		String l = scanner.nextLine();
-		Level level = Level.valueOfIgnoreCase(l);
-		
-		String s = scanner.nextLine();
-		Long seed = Long.parseLong(s);
-		
-		game.reset(level, seed);*/
-		
-		
 		return true;
 	}
 
-	
+	// TODO
 	@Override
 	protected Command parse(String[] commandWords) throws CommandParseException {
 		/*Level levelName = Level.valueOfIgnoreCase(commandWords[1]);

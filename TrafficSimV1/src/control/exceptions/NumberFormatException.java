@@ -1,6 +1,13 @@
 package control.exceptions;
 
-// EXCEPCION QUE SALTA CUANDO EL ELEMENTO PROPORCIONADO POR EL JUGADOR DEBERIA SER NUMERICO Y NO LO ES
+
+/**
+ * @author DannyP39
+ 
+ * ENG: Exception class for incorrect numeric values
+ * ESP: Clase de excepcion para valores numericos incorrectos
+ */
+@SuppressWarnings("serial")
 public class NumberFormatException extends CommandParseException{
 	
 	public NumberFormatException (String descripcion) {

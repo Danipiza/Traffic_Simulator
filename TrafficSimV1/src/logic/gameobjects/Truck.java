@@ -2,25 +2,36 @@ package logic.gameobjects;
 
 import logic.Game;
 
-// FALTA HACER QUE SE PONGAN 2 OBJETOS EN LA MISMA CASILLA DEPENDIENDO
-// DE QUIEN ENTRA PRIMERO 
-// (ES DECIR PONER EL TRUCK A LA DERECHA DE LOS DEMAS OBJETOS)
+
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Truck
+ * ESP: Clase para el objeto Camion
+ */
 public class Truck extends GameObject{	
 
-	private static final String SYMBOL = "←";  
-	
+	private static final String SYMBOL = "←"; 	
 	public static final Object INFO = "Hits the car and moves to the left";
 	
-	//private Game game;
 	
-	//private GameObjectContainer objects;
-
-	// CONSTRUCTORA DEL TRUCK
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Truck
+	 * ESP: Constructor de la clase Camion
+	 */
 	public Truck(Game game, int x, int y) {
 		super(game, x, y);		
 	}
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	
+	/**
+	 *  ENG: toString function to print Truck
+	 *  ESP: funcion toString para imprimir Camion
+	 */
 	public String toString() {
 		String ret = " ";
 		if (isAlive()) ret = SYMBOL;
@@ -28,17 +39,17 @@ public class Truck extends GameObject{
 		return ret;
 	}
 	
-	// IGUAL QUE EL PLAYER
-	public void goFoward() {
-		this.x--;
-		doCollision();
-		
+	
+	public void goFoward() { // Go foward (backwards seen by the player)
+		this.x--;	
 	}
 
-	// FUNCIONES DE HERENCIA
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
 	
 	@Override
-	public void onDelete() {
+	public void onDelete() { // Removes from the road
 		this.x = -1;		
 	}
 	
@@ -47,60 +58,56 @@ public class Truck extends GameObject{
 		return false;
 	}
 
-	// CREO QUE HAY QUE CREAR OTRA FUNCION 
-	// PARA PRIMERO PONERLOS EN LA MISMA CASILLA Y LUEGO MATAR AL PLAYER
 	@Override
-	public boolean receiveCollision(Player player) {
+	public boolean receiveCollision(Player player) { // When the Truck collides with the player, the player crash
 		player.setCrashed(); 
 		return false;
 	} 
 
 	@Override
-	public void onEnter() {
-		
-	}
+	public void onEnter() {	}
 
 	@Override
-	public void update() {
-		this.x--;  
-		// ESTO ES PARA QUE EL CAMION AVANCE
-		// PERO NO SE SI FUNCIONA ASI
-		
-	}
-
-	
-	public int getX() {
-		return x;
+	public void update() { // Moves one column to the left
+		this.x--;  		
 	}
 	
-	public int getY() {
-		return y;
-	}
 
+	
+	// -------------------------------------------------------------------------------------------------------
+	// --- COLLISION -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
+	
 	@Override
-	public boolean receiveShoot() { // NO SE SI LE PUEDE DAR UN SHOOT
-		
+	public boolean receiveShoot() { // Doesnt receives a shoot		
 		return false;
 	}
 
 	@Override
-	public boolean receiveExplosion() {
+	public boolean receiveExplosion() { // Removes from the road
 		game.removeDead(this);
 		return false;
 	}
 
 	@Override
-	public boolean receiveWave() {
+	public boolean receiveWave() { // Moves one columna to the right
 		this.x++;
 		return false;
 	}
 
 	@Override
-	public boolean receiveThunder() {
+	public boolean receiveThunder() { // Deletes from the road
 		game.removeDead(this);
 		return false;
 	}
 	
+	
+	// -------------------------------------------------------------------------------------------------------
+	// --- GETTERS -------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------
+	
+	public int getX() { return x; }	
+	public int getY() { return y; }
 	
 	
 

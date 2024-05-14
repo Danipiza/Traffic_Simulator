@@ -8,34 +8,56 @@ import control.exceptions.GameException;
 import logic.Game;
 
 
+
 /**
  * @author DannyP39
- *
+ 
+ * ENG: Class for controlling the program execution
+ * ESP: Clase para controlar la ejecucion del programa
  */
 public class Controller {
 
 	private static final String PROMPT = "Command > ";
 	
 	private Game game;
-
 	private Scanner scanner;
-
 	private GamePrinter printer;
-
+	
+	/**
+	 * @param game
+	 * @param scanner
+	 *
+	 * ENG: Class constructor for Controller
+	 * ESP: Constructor de la clase Controller
+	 */
 	public Controller(Game game, Scanner scanner) {
 		this.game=game;
 		this.scanner=scanner;
 		this.printer=new GamePrinter(game);
 	}
 
+	/** 
+	 *
+	 * ENG: Method for printing the road (with the actual state)
+	 * ESP: Funcion para imprimir la carretera (con el estado actual)
+	 */
 	public void printGame() { System.out.println(printer); }
 	
+	/** 
+	 *
+	 * ENG: Method for printing the end message
+	 * ESP: Funcion para imprimir el mensaje de finalizacion 
+	 */
 	public void printEndMessage() { System.out.println(printer.endMessage()); }
 	
 	
 	
-	/**
+	
+	/** 
 	 * @throws GameException
+	 *
+	 * ENG: Method for executing the program
+	 * ESP: Funcion para ejecutar el programa
 	 */
 	public void run() throws GameException {
 		boolean refreshDisplay = true;
@@ -61,9 +83,8 @@ public class Controller {
 			
 		}
 		
-		printEndMessage();
-		
-		
+		// End of the program
+		printEndMessage(); 
 		
 	}
 }

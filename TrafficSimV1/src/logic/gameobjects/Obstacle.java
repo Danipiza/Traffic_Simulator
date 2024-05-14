@@ -3,25 +3,36 @@ package logic.gameobjects;
 import logic.Game;
 import logic.gameobjects.*;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Obstacle
+ * ESP: Clase para el objecto Obstaculo
+ */
 public class Obstacle extends GameObject{
-
+	
+	// 1 of life
 	private static final String SYMBOL = "░";
-
 	public static final Object INFO = "Hits the car";
 	
-	// VIDA DEL OBSTACLE
-	private int vida = 1;
 	
-	//private Game game;	
 	
-	//private GameObjectContainer objects;	
-	
-	// CONSTRUCTORA DE OBSTACLE
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Obstacle
+	 * ESP: Constructor de la clase Obstaculo
+	 */
 	public Obstacle(Game game, int x, int y) {	  
 		super(game, x, y);	
 	}	
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	/**
+	 *  ENG: toString function to print Obstacle
+	 *  ESP: funcion toString para imprimir Obstaculo
+	 */
 	public String toString() {
 		String ret = " ";
 		if (isAlive()) ret = SYMBOL;
@@ -30,13 +41,14 @@ public class Obstacle extends GameObject{
 	}
 	
 	
-	// FUNCIONES DE HERENCIA 
+	// ---------------------------------------------------------------------------------------------------------
+	// --- COLLISION -------------------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------------------------------- 
 	
 	// BORRA EL OBSTACLE
 	@Override
-	public void onDelete() {
+	public void onDelete() { // Deletes from the road
 		this.x = -1;
-		//isAlive() = false;
 	}
 	
 	@Override
@@ -46,52 +58,47 @@ public class Obstacle extends GameObject{
 
 	// SE CHOCA Y EL PLAYER MUERE
 	@Override
-	public boolean receiveCollision(Player player) {
+	public boolean receiveCollision(Player player) { // When the player collides with the Obstacle, the player crash
 		player.setCrashed();
 		return false;
 	}
 
 	@Override
-	public void onEnter() {
-		System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAA");
-	}
+	public void onEnter() { }
 
 	@Override
-	public void update() {
-		
-	}
+	public void update() { }
 	
-	public static Object getObstaclesCount() {				
-		return null;
-	}
 
-	public static void reset() {		
-		
-	}
 
+	// ---------------------------------------------------------------------------------------------------------
+	// --- COLLISION -------------------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------------------------------
+	
 	@Override
-	public boolean receiveShoot() {
+	public boolean receiveShoot() { // Removes from the road, and add a coin to the player
 		game.removeDead(this);
-		game.getPlayer().addCoins2(1);
+		game.getPlayer().addCoins();
 		return true;
 	}
 
 	@Override
-	public boolean receiveExplosion() {
+	public boolean receiveExplosion() { // Removes from the road, and add a coin to the player
 		game.removeDead(this);
-		return true; // LE DA
+		game.getPlayer().addCoins();
+		return true; 
 	}
 
 	@Override
-	public boolean receiveWave() {
+	public boolean receiveWave() { // Moves one column to the right
 		this.x++;
-		return true; // LE DA
+		return true; 
 	}
 
 	@Override
-	public boolean receiveThunder() {
+	public boolean receiveThunder() { // Removes from the road
 		game.removeDead(this);
-		return true; // LE DA
+		return true; 
 	}
 	
 }

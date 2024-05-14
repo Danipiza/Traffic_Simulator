@@ -3,20 +3,32 @@ package control.commands;
 import logic.Game;
 import utils.StringUtils;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for Help command
+ * ESP: Clase para el comando Ayuda
+ */
 public class HelpCommand extends Command {
 
 	private static final String NAME = "help";
-
 	private static final String DETAILS = "[h]elp";
-
 	private static final String SHORTCUT = "h";
-
 	private static final String HELP = "show this help";
-
+	
+	/**
+	 *
+	 * ENG: Class constructor for HelpCommand
+	 * ESP: Constructor de la clase CommandoAyuda
+	 */
 	public HelpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 
+	/**
+	 *  ENG: Print the help menu
+	 *  ESP: Imprime el menu de ayuda
+	 */
 	@Override
 	public boolean execute(Game game) {
 		StringBuilder buffer = new StringBuilder("Available commands:");

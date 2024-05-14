@@ -2,19 +2,62 @@ package logic;
 
 import logic.gameobjects.Player;
 
+/**
+ * @author DannyP39
+ 
+ * ENG: Interface to manage the collisions
+ * ESP: Interfaz para manejar las colisiones
+ */
 public interface Collider {
 
-	boolean doCollision();
+	/** 
+	 * @return
+	 *
+	 * ENG: Method for doing a colision
+	 * ESP: Funcion para hacer una colision
+	 */
+	public boolean doCollision();
 
-	boolean receiveCollision(Player player);
+	/** 
+	 * @param player
+	 * @return
+	 *
+	 * ENG: Method for receiving a collision
+	 * ESP: Funcion para recibir una colision 
+	 */
+	public boolean receiveCollision(Player player);
 	
-	boolean receiveShoot();
+	/** 
+	 * @return
+	 *
+	 * ENG: Method for receiving a shoot
+	 * ESP: Funcion para recibir un disparo
+	 */
+	public boolean receiveShoot();
 	
-	boolean receiveExplosion();
+	/** 
+	 * @return
+	 *
+	 * ENG: Method for receiving an explosion
+	 * ESP: Funcion para recibir una explosion
+	 */
+	public boolean receiveExplosion();
 	
-	boolean receiveWave();
+	/** 
+	 * @return
+	 *
+	 * ENG: Method for receiving a wave
+	 * ESP: Funcion recibir una ola
+	 */
+	public boolean receiveWave();
 	
-	boolean receiveThunder();
+	/** 
+	 * @return
+	 *
+	 * ENG: Method for receiving a thunder
+	 * ESP: Funcion para recibir un trueno 
+	 */
+	public boolean receiveThunder();
 	
 
 }

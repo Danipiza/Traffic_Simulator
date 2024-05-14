@@ -2,100 +2,109 @@ package logic.gameobjects;
 
 import logic.Game;
 
-// YA TERMINADO FALTA VER LAS COSAS QUE NO SE USAN
+
+/**
+ * @author DannyP39
+ 
+ * ENG: Class for the object Wall
+ * ESP: Clase para el objeto Muro
+ */
 public class Wall extends GameObject {
 
 	public static final Object INFO = "The same as obstacle, but with points of life";   
 	
-	// VIDA DEL WALL
-	private int vida = 3;
 	
-	// STRINGS DEL MURO
+	private int life=3;	
+	
+	/**
+	 *  String to represents the life of the wall
+	 */
 	private static final String wallMax = "█";
-
-	private static final String wallMedium = "▒";
-	
+	private static final String wallMedium = "▒";	
 	private static final String wallLow = "░";
 	
-	//private Game game;	
 	
-	//private GameObjectContainer objects;
-	
-	// CONSTRUCTORA DEL WALL
+	/**
+	 * @param game
+	 * @param x
+	 * @param y
+	 *
+	 * ENG: Class constructor for Wall
+	 * ESP: Constructor de la clase Muro
+	 */
 	public Wall(Game game, int x, int y) {	  
 		super(game, x, y);	
 	}
 	
-	// FUNCION QUE DEVUELVE EL SIMBOLO
+	
+	/**
+	 * END: toString function to print the wall
+	 * ESP: funcion toString para imprimir el muro
+	 */
 	public String toString() {
 		String ret = " ";
 		if(isAlive()) {
-			if (vida == 3) ret = wallMax;
-			else if (vida == 2) ret = wallMedium;
-			else if (vida == 1) ret = wallLow;
+			if (life == 3) ret = wallMax;
+			else if (life == 2) ret = wallMedium;
+			else if (life == 1) ret = wallLow;
 		}
 		
 		return ret;
 	}	
 	
-	// FUNCIONES DE HERENCIA
 	
-	// BORRA LA WALL
-	@Override
-	public void onDelete() {
-		this.x = -1;	
-	}
 	
-	// FUNCION QUE DEVUELVE TRUE SE COLLISIONA EL PLAYER
+	// ---------------------------------------------------------------------------------------------------------
+	// --- COLLISION -------------------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------------------------------
+	
 	@Override
-	public boolean doCollision() {		
-		return false;
-	}
+	public void onDelete() { this.x = -1; } // Deletes the wall
+	
+	@Override
+	public boolean doCollision() { return false; } // Doesnt removes when the player collides
 
-	// SE CHOCA Y EL PLAYER MUERE (COMO CON EL OBJETO OBSTACLE)
 	@Override
-	public boolean receiveCollision(Player player) {
+	public boolean receiveCollision(Player player) { // Execute crash when the player collides
 		player.setCrashed();
 		return false;
 	}
 
 	@Override
-	public void onEnter() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onEnter() {	} // noop
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update() {} // Doesnt moves
+	
+	// ---------------------------------------------------------------------------------------------------------
+	// --- COLLISION -------------------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------------------------------
 
 	@Override
-	public boolean receiveShoot() {		
-		this.vida--;
+	public boolean receiveShoot() {	// Reduces its life. If the lifes reaches 0, deletes the wall from the road	
+		this.life--;
 		
-		if (this.vida == 0) {
-			game.removeDead(this); // SI LE DISPARA 3 VECES MUERE LA WALL
+		if (this.life == 0) {
+			game.removeDead(this); 
 			game.getPlayer().addCoins2(5);
 		}
 		return true;
 	}
 
 	@Override
-	public boolean receiveExplosion() {
+	public boolean receiveExplosion() { // Deletes the wall from the road
 		game.removeDead(this);
 		return true;
 	}
 
 	@Override
-	public boolean receiveWave() {
+	public boolean receiveWave() { // Moves one column to the right
 		this.x++; 
 		return true;
 	}
 
 	@Override
-	public boolean receiveThunder() { // LE MATA INSTANTANEAMENTE
+	public boolean receiveThunder() { // Deletes the wall from the road
 		game.removeDead(this);
 		return true;
 	}
