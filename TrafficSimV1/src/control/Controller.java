@@ -2,10 +2,10 @@ package control;
 
 import java.util.Scanner;
 
-import View.GamePrinter;
 import control.commands.Command;
 import control.exceptions.GameException;
 import logic.Game;
+import view.GamePrinter;
 
 
 

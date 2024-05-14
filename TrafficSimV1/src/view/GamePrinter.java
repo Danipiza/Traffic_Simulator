@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import control.Level;
 import logic.Game;

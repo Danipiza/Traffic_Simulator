@@ -1,7 +1,7 @@
 package control.commands;
 
-import View.GamePrinter;
 import logic.Game;
+import view.GamePrinter;
 
 /**
  * @author DannyP39

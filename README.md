@@ -1,4 +1,4 @@
-*[English](README.md) ∙ [Español]([README_EXP.md](https://github.com/Danipiza/Traffic_Simulator/files/15306795/README_ESP.md))*
+*[ENGLISH](README.md) ∙ [ESPAÑOL](https://github.com/Danipiza/Traffic_Simulator/blob/main/.Others/README_ESP.md)*
 
 # Traffic Simulator
 
