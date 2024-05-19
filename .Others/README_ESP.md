@@ -83,7 +83,11 @@ Hay implementado un método de recolección del tiempo record conseguido hasta e
 > [!CAUTION]
 > Para que se imprima correctamente en la terminal, los caracteres son UTF8, asegurate de cambiar la configuracion.
 
+### Ejecución
+![execution](https://github.com/Danipiza/Traffic_Simulator/assets/98972125/8f7d5cac-1e82-457d-aac6-acdbcae633c4)
 
+### Linea de meta
+![finish_line](https://github.com/Danipiza/Traffic_Simulator/assets/98972125/6bb696f4-708a-419f-8bef-9481e7455480)
 
 ### TP2
 

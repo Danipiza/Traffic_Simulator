@@ -76,6 +76,12 @@ There is a method implemented to collect the current record time achieved in a f
 > [!CAUTION]
 > For correct printing in the terminal, the characters are UTF8, make sure to change the configuration.
 
+### Execution
+![execution](https://github.com/Danipiza/Traffic_Simulator/assets/98972125/8f7d5cac-1e82-457d-aac6-acdbcae633c4)
+
+### Finish Line
+![finish_line](https://github.com/Danipiza/Traffic_Simulator/assets/98972125/6bb696f4-708a-419f-8bef-9481e7455480)
+
 ### TP2
 
 EXPLANATION TODO
